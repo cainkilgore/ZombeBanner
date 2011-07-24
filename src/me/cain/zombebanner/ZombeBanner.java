@@ -23,11 +23,13 @@ public class ZombeBanner extends JavaPlugin
 	public static PermissionHandler permissionHandler;
 
 
+        @Override
 	public void onDisable() 
 	{
 		log.info("[" + pluginname + "] " + pluginname + " has been disabled.");
 	}
 
+        @Override
 	public void onEnable() 
 	{
 		config = this.getConfiguration();
