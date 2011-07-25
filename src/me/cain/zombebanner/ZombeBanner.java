@@ -21,6 +21,7 @@ public class ZombeBanner extends JavaPlugin
     public boolean showMessages = true;
     public boolean stopFly = true;
     public boolean stopCheat = true;
+    public boolean useInvisible = false;
 
     @Override
     public void onDisable()
@@ -54,6 +55,7 @@ public class ZombeBanner extends JavaPlugin
         showMessages = config.getBoolean("config.showmessages", true);
         stopFly = config.getBoolean("config.banfly", true);
         stopCheat = config.getBoolean("config.bancheat", true);
+        useInvisible = config.getBoolean("config.useinvisible", false);
         config.save();
     }
 

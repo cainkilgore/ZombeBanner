@@ -21,10 +21,10 @@ public class ZombeListener extends PlayerListener
         Player player = event.getPlayer();
         if (!ZombeBanner.PermissionCheck("zombe.allowmods", player)) {
             if (plugin.stopFly) {
-                player.sendMessage("ßf ßf ß1 ß0 ß2 ß4");
+                player.sendMessage((plugin.useInvisible) ? "ßf ßf ß1 ß0 ß2 ß4" : "no-z-fly");
             }
             if (plugin.stopCheat) {
-                player.sendMessage("ßf ßf ß2 ß0 ß4 ß8");
+                player.sendMessage((plugin.useInvisible) ? "ßf ßf ß2 ß0 ß4 ß8" : "no-z-cheat");
             }
             if (plugin.showMessages) {
                 player.sendMessage("Zombe has been disabled.");
