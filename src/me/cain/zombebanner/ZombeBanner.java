@@ -41,7 +41,6 @@ public class ZombeBanner extends JavaPlugin
 			PluginManager pm = getServer().getPluginManager();
 		log.info("[" + pluginname + "] " + pluginname + " has been enabled.");
 		log.info("[" + pluginname + "] Created by CainFoool");
-		pm.registerEvent(Event.Type.PLAYER_INTERACT, new ZombeListener(this), Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_JOIN, TheListener, Priority.Normal, this);
 		setupPermissions();
 		ConfigFile();
@@ -92,7 +91,7 @@ public class ZombeBanner extends JavaPlugin
 		    e.printStackTrace();
 		   }
 		  }
-		 }
+		 }	
 	 
 	 private void setupPermissions() {
 		    if (permissionHandler != null) {
