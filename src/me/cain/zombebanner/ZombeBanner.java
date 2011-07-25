@@ -15,12 +15,14 @@ import org.bukkit.util.config.Configuration;
 
 public class ZombeBanner extends JavaPlugin
 {
-	private final ZombeListener TheListener = new ZombeListener(this);	
-	Player player;
+	private final ZombeListener TheListener = new ZombeListener(this);
 	public Configuration config;
-	Logger log = Logger.getLogger("Minecraft");
-	String pluginname = "ZombeBanner";
+	static final Logger log = Logger.getLogger("Minecraft");
+	public final String pluginname = "ZombeBanner";
 	public static PermissionHandler permissionHandler;
+        public boolean showMessages = true;
+        public boolean stopFly = true;
+        public boolean stopCheat = true;
 
 
         @Override
@@ -39,8 +41,6 @@ public class ZombeBanner extends JavaPlugin
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, new ZombeListener(this), Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_JOIN, TheListener, Priority.Normal, this);
 		setupPermissions();
-		ConfigFile();
-		config.load();
 		ConfigurationCheck();
 	}
 	
@@ -53,29 +53,11 @@ public class ZombeBanner extends JavaPlugin
 	
 	public void ConfigurationCheck() 
 	{
-		if(config.getProperty("config.showmessages") == null)
-		{
-		     config.setProperty("config.showmessages", "true");
-		     config.save();
-		}
+                showMessages = config.getBoolean("config.showmessages", true);
+                stopFly = config.getBoolean("config.banfly", true);
+                stopCheat = config.getBoolean("config.bancheat", true);
+                config.save();
 	}
-	
-	 private void ConfigFile() {
-		  
-		  String file = this.getDataFolder().toString()+"/config.yml";
-		  
-		  File yml = new File(file);
-		  
-		  if (!yml.exists()) {
-		   new File(this.getDataFolder().toString()).mkdir();
-		   
-		   try {
-		    yml.createNewFile();
-		   } catch (IOException e) {
-		    e.printStackTrace();
-		   }
-		  }
-		 }
 	 
 	 private void setupPermissions() {
 		    if (permissionHandler != null) {

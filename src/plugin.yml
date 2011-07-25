@@ -1,4 +1,8 @@
 name: Zombebanner
-version: 1.4.3
+version: 1.5
 author: CainFoool
 main: me.cain.zombebanner.ZombeBanner
+permissions:
+  zombe.allowmods:
+    description: Allows a player to use zombe's modpack.
+    default: op

@@ -19,16 +19,19 @@ public class ZombeListener extends PlayerListener
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		if(!ZombeBanner.PermissionCheck("zombe.allowmods", player)) {
-			player.sendMessage("ßf ßf ß1 ß0 ß2 ß4 ßf ßf ß2 ß0 ß4 ß8");
-			if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
+                        if(plugin.stopFly)
+                            player.sendMessage("ßf ßf ß1 ß0 ß2 ß4");
+                        if(plugin.stopCheat)
+                            player.sendMessage("ßf ßf ß2 ß0 ß4 ß8");
+			if(plugin.showMessages) {
                             player.sendMessage("Zombe has been disabled.");
 			} else {
 				return;
 			}
 		}
 		else {
-			if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
-			player.sendMessage("You are allowed to use Zombe!");
+			if(plugin.showMessages) {
+                            player.sendMessage("You are allowed to use Zombe!");
 			} else {
 				return;
                         }
