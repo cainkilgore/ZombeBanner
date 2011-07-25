@@ -5,13 +5,20 @@ import java.io.IOException;
 import java.util.logging.Logger;
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
+
+// Like my work? Donate! cain.donaghey@live.co.uk
 
 public class ZombeBanner extends JavaPlugin
 {
@@ -56,6 +63,18 @@ public class ZombeBanner extends JavaPlugin
 		     config.setProperty("config.showmessages", "true");
 		     config.save();
 		}
+		
+		if(config.getProperty("config.disablefly") == null)
+		{
+			config.setProperty("config.disablefly", "true");
+			config.save();
+		}
+		
+		if(config.getProperty("config.disablecheat") == null)
+		{
+			config.setProperty("config.disablecheat", "true");
+			config.save();
+		}
 	}
 	
 	 private void ConfigFile() {
@@ -79,17 +98,12 @@ public class ZombeBanner extends JavaPlugin
 		    if (permissionHandler != null) {
 		        return;
 		    }
-		    
 		    Plugin permissionsPlugin = this.getServer().getPluginManager().getPlugin("Permissions");
-		    
 		    if (permissionsPlugin == null) {
-		        log.info("Permission system not detected, defaulting to OP");
+		        log.info("[" + pluginname + "] Permissions not detected. Defaulting to OP.");
 		        return;
 		    }
-		    
 		    permissionHandler = ((Permissions) permissionsPlugin).getHandler();
 		    log.info("Found and will use plugin "+((Permissions)permissionsPlugin).getDescription().getFullName());
 		}
 }
-		
-// Created by CainFoool
