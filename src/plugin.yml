@@ -2,3 +2,7 @@ name: Zombebanner
 version: 1.4.3
 author: CainFoool
 main: me.cain.zombebanner.ZombeBanner
+commands:
+   zombe:
+      description: Check The ZombeBanner settings.
+      usage: 
