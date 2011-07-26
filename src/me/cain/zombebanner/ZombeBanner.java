@@ -3,20 +3,16 @@ package me.cain.zombebanner;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-import com.nijiko.permissions.PermissionHandler;
-import com.nijikokun.bukkit.Permissions.Permissions;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Server;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
+
+import com.nijiko.permissions.PermissionHandler;
+import com.nijikokun.bukkit.Permissions.Permissions;
 
 // Like my work? Donate! cain.donaghey@live.co.uk
 

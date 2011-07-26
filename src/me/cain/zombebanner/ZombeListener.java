@@ -21,10 +21,14 @@ public class ZombeListener extends PlayerListener
 		Player player = Event.getPlayer();
 		if(!ZombeBanner.PermissionCheck("zombe.allowmods", player)) {
 			if(this.plugin.config.getProperty("config.disablefly").equals("true")) {
-				player.sendMessage("no-z-fly");
+				String nofly = "&f &f &1 &0 &2 &4 ";
+				nofly = nofly.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+				player.sendMessage(nofly);
 			}
 			if(this.plugin.config.getProperty("config.disablecheat").equals("true")) {
-				player.sendMessage("no-z-cheat");
+				String nocheat = "&f &f &2 &0 &4 &8";
+				nocheat = nocheat.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+				player.sendMessage(nocheat);
 			}
 			if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
 			player.sendMessage(ChatColor.DARK_RED + "Zombe has been disabled.");
