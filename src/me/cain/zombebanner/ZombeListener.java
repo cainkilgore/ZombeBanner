@@ -16,7 +16,6 @@ public class ZombeListener extends PlayerListener
 	{
 		this.plugin = instance;
 	}
-
 	public void onPlayerJoin(PlayerJoinEvent Event) {
 		Player player = Event.getPlayer();
 		if(!ZombeBanner.PermissionCheck("zombe.allowmods", player)) {
@@ -35,8 +34,7 @@ public class ZombeListener extends PlayerListener
 			} else {
 				return;
 			}
-		}
-		else {
+		} else {
 			if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
 			player.sendMessage("You are allowed to use Zombe!");
 			} else {

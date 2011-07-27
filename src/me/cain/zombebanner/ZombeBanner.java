@@ -3,6 +3,11 @@ package me.cain.zombebanner;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Server;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
@@ -13,8 +18,6 @@ import org.bukkit.util.config.Configuration;
 
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
-
-// Like my work? Donate! cain.donaghey@live.co.uk
 
 public class ZombeBanner extends JavaPlugin
 {
@@ -58,13 +61,11 @@ public class ZombeBanner extends JavaPlugin
 		     config.setProperty("config.showmessages", "true");
 		     config.save();
 		}
-		
 		if(config.getProperty("config.disablefly") == null)
 		{
 			config.setProperty("config.disablefly", "true");
 			config.save();
 		}
-		
 		if(config.getProperty("config.disablecheat") == null)
 		{
 			config.setProperty("config.disablecheat", "true");
@@ -75,12 +76,9 @@ public class ZombeBanner extends JavaPlugin
 	 private void ConfigFile() {
 		  
 		  String file = this.getDataFolder().toString()+"/config.yml";
-		  
 		  File yml = new File(file);
-		  
 		  if (!yml.exists()) {
 		   new File(this.getDataFolder().toString()).mkdir();
-		   
 		   try {
 		    yml.createNewFile();
 		   } catch (IOException e) {
@@ -101,4 +99,18 @@ public class ZombeBanner extends JavaPlugin
 		    permissionHandler = ((Permissions) permissionsPlugin).getHandler();
 		    log.info("Found and will use plugin "+((Permissions)permissionsPlugin).getDescription().getFullName());
 		}
+	 
+	 public boolean onCommand(CommandSender sender, Command cmd, String label, String [] args) {;
+		 if(cmd.getName().equalsIgnoreCase("zombe")) {
+			 if(!ZombeBanner.PermissionCheck("zombe.command", (Player) sender)) {
+				 sender.sendMessage("You do not have permission to check Zombe settings.");
+			 } else {
+			 sender.sendMessage(ChatColor.RED + "Zombe Settings");
+			 sender.sendMessage("Disable Zombe Cheats: " + this.config.getProperty("config.disablecheat").toString());
+			 sender.sendMessage("Disable Zombe Fly: " + this.config.getProperty("config.disablefly").toString());
+		 }
+		return false;
+	 }
+		 return false;
+	 }
 }
