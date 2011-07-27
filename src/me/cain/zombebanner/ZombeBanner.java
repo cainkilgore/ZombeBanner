@@ -61,16 +61,6 @@ public class ZombeBanner extends JavaPlugin
 		     config.setProperty("config.showmessages", "true");
 		     config.save();
 		}
-		if(config.getProperty("config.disablefly") == null)
-		{
-			config.setProperty("config.disablefly", "true");
-			config.save();
-		}
-		if(config.getProperty("config.disablecheat") == null)
-		{
-			config.setProperty("config.disablecheat", "true");
-			config.save();
-		}
 	}
 	
 	 private void ConfigFile() {
@@ -100,17 +90,4 @@ public class ZombeBanner extends JavaPlugin
 		    log.info("Found and will use plugin "+((Permissions)permissionsPlugin).getDescription().getFullName());
 		}
 	 
-	 public boolean onCommand(CommandSender sender, Command cmd, String label, String [] args) {;
-		 if(cmd.getName().equalsIgnoreCase("zombe")) {
-			 if(!ZombeBanner.PermissionCheck("zombe.command", (Player) sender)) {
-				 sender.sendMessage("You do not have permission to check Zombe settings.");
-			 } else {
-			 sender.sendMessage(ChatColor.RED + "Zombe Settings");
-			 sender.sendMessage("Disable Zombe Cheats: " + this.config.getProperty("config.disablecheat").toString());
-			 sender.sendMessage("Disable Zombe Fly: " + this.config.getProperty("config.disablefly").toString());
-		 }
-		return false;
-	 }
-		 return false;
-	 }
 }
