@@ -18,29 +18,39 @@ public class ZombeListener extends PlayerListener
 	}
 	public void onPlayerJoin(PlayerJoinEvent Event) {
 		Player player = Event.getPlayer();
+		
 		if(!ZombeBanner.PermissionCheck("zombe.allowfly", player)) {
 				String nofly = "&f &f &1 &0 &2 &4 ";
 				nofly = nofly.replaceAll("(&([a-f0-9]))", "\u00A7$2");
 				player.sendMessage(nofly);
-			} else {
+			} 
+		else {
+				if(ZombeBanner.config.getBoolean("config.showmessages", true)) {
 				player.sendMessage("You are allowed to use Zombe Fly!");
+				}
+				
 			}
+		
 			if(!ZombeBanner.PermissionCheck("zombe.allowcheat", player)) {
 				String nocheat = "&f &f &2 &0 &4 &8";
 				nocheat = nocheat.replaceAll("(&([a-f0-9]))", "\u00A7$2");
 				player.sendMessage(nocheat);
-			} else {
-				player.sendMessage("You are allowed to use Zombe Cheat!");
 			}
-			if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
+			
+			else {
+				if(ZombeBanner.config.getBoolean("config.showmessages", true)) {
+				player.sendMessage("You are allowed to use Zombe Cheat!");
+				}
+			}
+			
+			if(ZombeBanner.config.getBoolean("config.showmessages", true)) {
 			player.sendMessage(ChatColor.DARK_RED + "Zombe has been disabled.");
 			}
+			
 			else {
-		if(this.plugin.config.getProperty("config.showmessages").equals("true")) {
+		if(ZombeBanner.config.getBoolean("config.showmessages", true)) {
 			player.sendMessage("You are allowed to use Zombe!");
-			} else {
-				return;
-		}
+			}
 		}
 	}
 }
