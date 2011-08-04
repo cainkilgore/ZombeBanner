@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
+import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,7 +25,7 @@ import com.nijikokun.bukkit.Permissions.Permissions;
 public class ZombeBanner extends JavaPlugin
 {
 	private final ZombeListener TheListener = new ZombeListener(this);
-	private final SpoutListener SpoutL = new SpoutListener();
+	private final SpoutL SpoutL = new SpoutL(this);
 	Player player;
 	public static Configuration config;
 	Logger console = Logger.getLogger("Minecraft");
@@ -47,7 +48,7 @@ public class ZombeBanner extends JavaPlugin
 		console.info("[" + pName + "] Created by CainFoool");
 		if(config.getBoolean("config.checkforupdates", true)) { VersionCheck(); }
 		pm.registerEvent(Event.Type.PLAYER_JOIN, TheListener, Priority.Normal, this);
-		pm.registerEvent(Event.Type.CUSTOM_EVENT, SpoutL, Priority.Low, this);
+		pm.registerEvent(Type.CUSTOM_EVENT, SpoutL, Priority.Normal, this);
 		setupPermissions();
 		config.load();
 		ConfigurationCheck();
