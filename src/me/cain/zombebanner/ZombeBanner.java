@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.logging.Logger;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
@@ -21,11 +24,13 @@ import com.nijikokun.bukkit.Permissions.Permissions;
 public class ZombeBanner extends JavaPlugin
 {
 	private final ZombeListener TheListener = new ZombeListener(this);
+	private final SpoutListener SpoutL = new SpoutListener();
 	Player player;
 	public static Configuration config;
 	Logger console = Logger.getLogger("Minecraft");
 	String pName = "ZombeBanner";
 	public static PermissionHandler permissionHandler;
+	Boolean spout = false;
 
 
 	public void onDisable() 
@@ -42,6 +47,7 @@ public class ZombeBanner extends JavaPlugin
 		console.info("[" + pName + "] Created by CainFoool");
 		if(config.getBoolean("config.checkforupdates", true)) { VersionCheck(); }
 		pm.registerEvent(Event.Type.PLAYER_JOIN, TheListener, Priority.Normal, this);
+		pm.registerEvent(Event.Type.CUSTOM_EVENT, SpoutL, Priority.Low, this);
 		setupPermissions();
 		config.load();
 		ConfigurationCheck();
@@ -51,7 +57,7 @@ public class ZombeBanner extends JavaPlugin
 		    if (permissionHandler != null) {
 		      return permissionHandler.has(player, node);
 		    }
-		    return player.hasPermission(node);
+		    return player.isOp();
 		  }
 	
 	public void ConfigurationCheck() 
@@ -99,7 +105,7 @@ public class ZombeBanner extends JavaPlugin
 	            String str;
 	            while ((str = in.readLine()) != null) {
 	                int version = Integer.parseInt(str);
-	                if (version > 152){
+	                if (version > 154){
 	                    console.info("[ZombeBanner] A new update is available for Zombebanner!");
 	                    console.info("[ZombeBanner] Download at: http://bit.ly/rj5iJl");
 	                    console.info("[ZombeBanner] Latest version: " + version);
@@ -110,5 +116,22 @@ public class ZombeBanner extends JavaPlugin
 	        }
 	        catch (Exception e) { e.printStackTrace(); }
 	 }
+	 
+	 public boolean onCommand(CommandSender sender, Command cmd, String label, String [] args) {
+		 if(label.equals("zombe")) {
+			 if(!(sender instanceof Player)) {
+				 sender.sendMessage(ChatColor.DARK_RED + "You can only check settings in-game.");
+			 } else {
+		 if(!ZombeBanner.PermissionCheck("zombe.command", (Player) sender)) {
+			 sender.sendMessage("You do not have permission to use this command!");
+		 } else {
+			 sender.sendMessage(ChatColor.GREEN + "Server Zombe Settings");
+			 sender.sendMessage("Show Messages: " + ZombeBanner.config.getProperty("config.showmessages"));
+			 sender.sendMessage("Version Checking: " + ZombeBanner.config.getProperty("config.checkforupdates"));
+		 }
+	}
+		 }
+		return false;
+}
 	 
 }

@@ -1,7 +1,8 @@
 name: Zombebanner
-version: 1.5.0
+version: 1.5.4
 author: CainFoool
 main: me.cain.zombebanner.ZombeBanner
+depend: [Spout]
 commands:
    zombe:
       description: Check The ZombeBanner settings.
