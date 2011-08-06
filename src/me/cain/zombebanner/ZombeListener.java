@@ -1,13 +1,10 @@
 package me.cain.zombebanner;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
-import org.getspout.spoutapi.event.spout.SpoutCraftEnableEvent;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class ZombeListener extends PlayerListener
 {
@@ -29,27 +26,23 @@ public class ZombeListener extends PlayerListener
 			} 
 		else {
 				if(ZombeBanner.config.getProperty("config.showmessages").equals("true")) {
-				player.sendMessage("You are allowed to use Zombe Fly!");
+				player.sendMessage(ChatColor.GREEN + "[ZombeBanner] " + ChatColor.WHITE + "You are allowed to fly!");
 			}
 		
 			if(!ZombeBanner.PermissionCheck("zombe.allowcheat", player)) {
-				String nocheat = "&f &f &2 &0 &4 &8";
+				String nocheat = "&f &f &2 &0 &4 &8 ";
 				nocheat = nocheat.replaceAll("(&([a-f0-9]))", "\u00A7$2");
 				player.sendMessage(nocheat);
 			}
 			
 			else {
 				if(ZombeBanner.config.getProperty("config.showmessages").equals("true")) {
-				player.sendMessage("You are allowed to use Zombe Cheat!");
-				}
+				player.sendMessage(ChatColor.GREEN + "[ZombeBanner] " + ChatColor.WHITE + "You are allowed to cheat!");
+				} else { return; }
 			}
+			if(!ZombeBanner.PermissionCheck("zombe.allowfly", player) && !ZombeBanner.PermissionCheck("zombe.allowcheat", player)) {
 			if(ZombeBanner.config.getProperty("config.showmessages").equals("true")) {
-			player.sendMessage(ChatColor.DARK_RED + "Zombe has been disabled.");
-			}
-			
-			else {
-		if(ZombeBanner.config.getProperty("config.showmessages").equals("true")) {
-			player.sendMessage("You are allowed to use Zombe!");
+			player.sendMessage(ChatColor.DARK_RED + ZombeBanner.config.getProperty("config.zombedisabledmessage").toString());
 			}
 		}
 	}

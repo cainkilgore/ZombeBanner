@@ -1,9 +1,24 @@
 name: Zombebanner
-version: 1.5.4
+version: 1.6.0
 author: CainFoool
 main: me.cain.zombebanner.ZombeBanner
-depend: [Spout]
 commands:
    zombe:
       description: Check The ZombeBanner settings.
       usage: 
+permissions:
+    zombe.*:
+        description: Gives access to all Zombe commands
+        children:
+            zombe.allowfly: true
+            zombe.allowcheat: true
+            zombe.command: true
+    zombe.allowfly:
+        description: Grants access to flying
+        default: op
+    zombe.allowcheat:
+        description: Grants access to cheating
+        default: op
+    zombe.command:
+        description: Allows you to use zombe command
+        default: op

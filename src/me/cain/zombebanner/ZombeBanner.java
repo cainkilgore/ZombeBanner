@@ -47,9 +47,9 @@ public class ZombeBanner extends JavaPlugin
 		console.info("[" + pName + "] " + pName + " has been enabled.");
 		console.info("[" + pName + "] Created by CainFoool");
 		if(config.getBoolean("config.checkforupdates", true)) { VersionCheck(); }
+		setupPermissions();
 		pm.registerEvent(Event.Type.PLAYER_JOIN, TheListener, Priority.Normal, this);
 		pm.registerEvent(Type.CUSTOM_EVENT, SpoutL, Priority.Normal, this);
-		setupPermissions();
 		config.load();
 		ConfigurationCheck();
 	}
@@ -58,7 +58,7 @@ public class ZombeBanner extends JavaPlugin
 		    if (permissionHandler != null) {
 		      return permissionHandler.has(player, node);
 		    }
-		    return player.isOp();
+		    return player.hasPermission(node);
 		  }
 	
 	public void ConfigurationCheck() 
@@ -71,6 +71,16 @@ public class ZombeBanner extends JavaPlugin
 		if(config.getProperty("config.checkforupdates") == null)
 		{
 			config.setProperty("config.checkforupdates", "true");
+			config.save();
+		}
+		if(config.getProperty("config.allowedmodsmessage") == null)
+		{
+			config.setProperty("config.allowedmodsmessage", "You can use mods!");
+			config.save();
+		}
+		if(config.getProperty("config.zombedisabledmessage") == null)
+		{
+			config.setProperty("config.zombedisabledmessage", "Zombe is disabled for you.");
 			config.save();
 		}
 		
@@ -106,10 +116,9 @@ public class ZombeBanner extends JavaPlugin
 	            String str;
 	            while ((str = in.readLine()) != null) {
 	                int version = Integer.parseInt(str);
-	                if (version > 154){
-	                    console.info("[ZombeBanner] A new update is available for Zombebanner!");
+	                if (version > 162){
+	                    console.info("[ZombeBanner] A new update is available!");
 	                    console.info("[ZombeBanner] Download at: http://bit.ly/rj5iJl");
-	                    console.info("[ZombeBanner] Latest version: " + version);
 	                    break;
 	                }
 	            }
@@ -126,9 +135,13 @@ public class ZombeBanner extends JavaPlugin
 		 if(!ZombeBanner.PermissionCheck("zombe.command", (Player) sender)) {
 			 sender.sendMessage("You do not have permission to use this command!");
 		 } else {
-			 sender.sendMessage(ChatColor.GREEN + "Server Zombe Settings");
-			 sender.sendMessage("Show Messages: " + ZombeBanner.config.getProperty("config.showmessages"));
-			 sender.sendMessage("Version Checking: " + ZombeBanner.config.getProperty("config.checkforupdates"));
+			 sender.sendMessage(ChatColor.GREEN + "=====Server Zombe Settings=====");
+			 sender.sendMessage(ChatColor.GREEN + "| Show Messages: " + ChatColor.WHITE + ZombeBanner.config.getProperty("config.showmessages").toString());
+			 sender.sendMessage(ChatColor.GREEN + "| Version Checking: " + ChatColor.WHITE + ZombeBanner.config.getProperty("config.checkforupdates").toString());
+			 sender.sendMessage(ChatColor.GREEN + "| Allowed Fly Message: " + ChatColor.WHITE + ZombeBanner.config.getProperty("config.allowedflymessage").toString());
+			 sender.sendMessage(ChatColor.GREEN + "| Allowed Cheat Message: " + ChatColor.WHITE + ZombeBanner.config.getProperty("config.allowedcheatmessage").toString());
+			 sender.sendMessage(ChatColor.GREEN + "| Zombe Disabled Message: " + ChatColor.WHITE + ZombeBanner.config.getProperty("config.zombedisabledmessage").toString());
+			 sender.sendMessage(ChatColor.GREEN + "===============================");
 		 }
 	}
 		 }
