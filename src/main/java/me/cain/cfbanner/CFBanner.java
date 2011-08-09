@@ -32,7 +32,7 @@ public class CFBanner extends JavaPlugin
 	String pName = "CFBanner";
 	public static PermissionHandler permissionHandler;
 	Boolean spout = false;
-	String testmaven = "lol";
+	String testmaven = "lolw";
 
 
 	public void onDisable() 
