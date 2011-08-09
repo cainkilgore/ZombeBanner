@@ -1,24 +1,25 @@
-name: Zombebanner
-version: 1.6.0
+name: CFBanner
+version: 1.7
 author: CainFoool
-main: me.cain.zombebanner.ZombeBanner
+main: me.cain.cfbanner.CFBanner
+softdepend: [Spout]
 commands:
-   zombe:
-      description: Check The ZombeBanner settings.
+   cfbanner:
+      description: Check The CFBanner settings
       usage: 
 permissions:
-    zombe.*:
-        description: Gives access to all Zombe commands
+    cf.*:
+        description: Gives access to all CFBanner commands
         children:
-            zombe.allowfly: true
-            zombe.allowcheat: true
-            zombe.command: true
-    zombe.allowfly:
+            cf.allowfly: true
+            cf.allowcheat: true
+            cf.command: true
+    cf.allowfly:
         description: Grants access to flying
         default: op
-    zombe.allowcheat:
+    cf.allowcheat:
         description: Grants access to cheating
         default: op
-    zombe.command:
-        description: Allows you to use zombe command
+    cf.command:
+        description: Allows you to use cfbanner command
         default: op
