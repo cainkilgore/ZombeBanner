@@ -33,6 +33,8 @@ public class CFBanner extends JavaPlugin
 	public static PermissionHandler permissionHandler;
 	Boolean spout = false;
 	String testmaven = "lolw";
+	
+	// Maven support!
 
 
 	public void onDisable() 
