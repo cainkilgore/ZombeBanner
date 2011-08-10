@@ -34,7 +34,7 @@ public class CFBanner extends JavaPlugin
 	Boolean spout = false;
 	String testmaven = "lolw";
 	
-	// Maven support!
+	// Maven support! Yay!
 
 
 	public void onDisable() 
