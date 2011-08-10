@@ -210,7 +210,8 @@ public class CFBanner extends JavaPlugin {
 					for (Player p : this.getServer().getOnlinePlayers()) {
 						if (CFBanner.PermissionCheck("cf.notify",
 								(Player) sender)) {
-							p.sendMessage(ChatColor.RED
+							p.sendMessage(ChatColor.GREEN + "[CFBanner] "
+									+ ChatColor.RED
 									+ ((Player) sender).getDisplayName()
 									+ " uses zombe mods!"
 									+ ChatColor.GRAY
