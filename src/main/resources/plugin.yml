@@ -2,11 +2,14 @@ name: CFBanner
 version: 1.7
 author: CainFoool
 main: me.cain.cfbanner.CFBanner
-softdepend: [Spout]
 commands:
    cfbanner:
       description: Check The CFBanner settings
       usage: 
+   zombe-icon:
+      description: Logs zombe use
+      usage: 
+      permission: this.is.for.hiding.from.help
 permissions:
     cf.*:
         description: Gives access to all CFBanner commands
@@ -22,4 +25,10 @@ permissions:
         default: op
     cf.command:
         description: Allows you to use cfbanner command
+        default: op
+    cf.notify:
+        description: Notifies you when player uses zombe
+        default: op
+    cf.notify.exempt:
+        description: Do not notify or log your zombe uses
         default: op
