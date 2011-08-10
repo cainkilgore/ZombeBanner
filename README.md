@@ -5,7 +5,7 @@ A Popular Bukkit Minecraft Server Mod.
 
 Bukkit forum thread: [http://forums.bukkit.org/threads/CFBanner.27804/](http://forums.bukkit.org/threads/CFBanner.27804/)  
 Bugs/Suggestions: [Issues on GitHub](https://github.com/CainFoool/ZombeBanner/issues)  
-Wiki: [Wiki on GitHub](https://github.com/CainFool/ZombeBanner/wiki)  
+Wiki: [Wiki on GitHub](https://github.com/CainFoool/ZombeBanner/wiki)  
 
 Compilation
 -----------
