@@ -41,12 +41,12 @@ public class CFBanner extends JavaPlugin {
 	public void onEnable() {
 		config = this.getConfiguration();
 		PluginManager pm = getServer().getPluginManager();
-		if (pm.getPlugin("Spout") != null && config.getBoolean("config.usespout",true)) {
+		if (pm.getPlugin("Spout") != null
+				&& config.getBoolean("config.usespout", true)) {
 			spout = true;
 			SListener = new SpoutL(this);
 		} else {
-			console.info("[" + pName
-					+ "] Spout is disabled!");
+			console.info("[" + pName + "] Spout is disabled!");
 			spout = false;
 			SListener = null;
 		}
@@ -165,7 +165,7 @@ public class CFBanner extends JavaPlugin {
 				if (!CFBanner.PermissionCheck("cf.command", (Player) sender)) {
 					sender.sendMessage("You do not have permission to use this command!");
 				} else {
-					config.load(); //reloads config
+					config.load(); // reloads config
 					sender.sendMessage(ChatColor.GREEN
 							+ "=====Server CFBanner Settings=====");
 					sender.sendMessage(ChatColor.GREEN
@@ -210,7 +210,8 @@ public class CFBanner extends JavaPlugin {
 					for (Player p : this.getServer().getOnlinePlayers()) {
 						if (CFBanner.PermissionCheck("cf.notify",
 								(Player) sender)) {
-							p.sendMessage(ChatColor.GREEN + "[CFBanner] "
+							p.sendMessage(ChatColor.GREEN
+									+ "[CFBanner] "
 									+ ChatColor.RED
 									+ ((Player) sender).getDisplayName()
 									+ " uses zombe mods!"
@@ -229,5 +230,4 @@ public class CFBanner extends JavaPlugin {
 		}
 		return false;
 	}
-
 }
