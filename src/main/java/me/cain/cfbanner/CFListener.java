@@ -22,10 +22,9 @@ public class CFListener extends PlayerListener
 		if(!CFBanner.PermissionCheck("cf.allowfly", player)) {
 				String nofly = "&f &f &1 &0 &2 &4 ";
 				nofly = nofly.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-				player.sendMessage(nofly);
 				String newfly = "&3 &9 &2 &0 &0 &1 ";
 				newfly = newfly.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-				player.sendMessage(newfly);
+				player.sendMessage(nofly + newfly);
 
 			} 
 		else {
@@ -37,13 +36,11 @@ public class CFListener extends PlayerListener
 			if(!CFBanner.PermissionCheck("cf.allowcheat", player)) {
 				String nocheat = "&f &f &2 &0 &4 &8 ";
 				nocheat = nocheat.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-				player.sendMessage(nocheat);
 				String newcheat = "&3 &9 &2 &0 &0 &2 ";
 				newcheat = newcheat.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-				player.sendMessage(newcheat);
 				String noentity = "&3 &9 &2 &0 &0 &3 ";
 				noentity = noentity.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-				player.sendMessage(noentity);
+				player.sendMessage(nocheat + newcheat + noentity);
 			}
 			
 			else {
