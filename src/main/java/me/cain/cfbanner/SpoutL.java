@@ -8,9 +8,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class SpoutL extends SpoutListener {
 	CFBanner plugin;
-	private boolean Color;
-	
-    public SpoutL(CFBanner plugin) {
+	public SpoutL(CFBanner plugin) {
         this.plugin = plugin;
     }
 	
@@ -20,9 +18,13 @@ public class SpoutL extends SpoutListener {
         } else {
         	if(CFBanner.PermissionCheck("cf.allowfly", (SpoutPlayer) event.getPlayer()) || CFBanner.PermissionCheck("cf.allowcheat", (SpoutPlayer) event.getPlayer()))
         	{
+        		if(CFBanner.config.getProperty("config.textonscreen").equals("true")) {
+        			final SpoutPlayer splayer = (SpoutPlayer) event.getPlayer();
+        			addText("FFFFFF", "CFBanner is on!", "top-left", splayer);
+        		}
         		if(CFBanner.config.getProperty("config.showmessages").equals("true")) { 
 			final SpoutPlayer splayer = (SpoutPlayer) event.getPlayer();
-			addText("FFFFFF", "CFBanner is on!", "bottom-right", splayer);
+			addText("FFFFFF", "CFBanner is on!", "top-left", splayer);
 				splayer.sendNotification("CFBanner", "You're allowed mods!", Material.DIAMOND);
 				} else { return; }
         	}

@@ -80,6 +80,14 @@ public class CFBanner extends JavaPlugin
 			config.setProperty("config.cfdisabledmessage", "Zombe is disabled for you.");
 			config.save();
 		}
+		if(config.getProperty("config.kickonjoin") == null)
+		{
+			config.setProperty("config.kickonjoin", "false");
+		}
+		if(config.getProperty("config.textonscreen") == null)
+		{
+			config.setProperty("config.textonscreen", "true");
+		}
 		
 		  String file = this.getDataFolder().toString()+"/config.yml";
 		  File yml = new File(file);
@@ -113,7 +121,7 @@ public class CFBanner extends JavaPlugin
 	            String str;
 	            while ((str = in.readLine()) != null) {
 	                int version = Integer.parseInt(str);
-	                if (version > 170){
+	                if (version > 171){
 	                    console.info("[CFBanner] A new update is available!");
 	                    console.info("[CFbanner] Download at: http://bit.ly/rj5iJl");
 	                    break;
